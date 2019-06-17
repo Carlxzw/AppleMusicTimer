@@ -628,6 +628,7 @@ public class CircleTimerView extends View
          * @param time
          */
         void onTimerSetValueChange(int time);
+
     }
 
 }

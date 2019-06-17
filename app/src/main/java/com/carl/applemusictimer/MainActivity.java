@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements CircleTimerView.C
 
     @Override
     public void onTimerTimingValueChanged(int time) {
-
+        circleTimerView.startTimer();
     }
 
     @Override
