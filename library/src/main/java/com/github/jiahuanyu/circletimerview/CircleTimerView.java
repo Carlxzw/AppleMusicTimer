@@ -117,6 +117,7 @@ public class CircleTimerView extends View
                 mCurrentRadian = 0;
                 mCurrentTime = 0;
                 timer.cancel();
+                timer = null;
                 mStarted = false;
                 if (mCircleTimerListener != null)
                 {
@@ -473,6 +474,7 @@ public class CircleTimerView extends View
     protected void onSizeChanged(int w, int h, int oldw, int oldh)
     {
         super.onSizeChanged(w, h, oldw, oldh);
+
     }
 
     /**
@@ -480,6 +482,9 @@ public class CircleTimerView extends View
      */
     public void startTimer()
     {
+        if (timer == null) {
+            timer = new Timer();
+        }
         Log.d(TAG, "startTimer");
         if (mCurrentRadian > 0 && !mStarted)
         {

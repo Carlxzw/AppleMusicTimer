@@ -7,6 +7,7 @@ import android.media.AudioManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * @author 创建人 ：xiezhiwei
@@ -36,6 +37,7 @@ public class MusicService extends Service {
                 Context.AUDIO_SERVICE);
         // 获取系统音乐服务状态
         isPlaying=mAudioManager.isMusicActive();
+        Toast.makeText(getApplicationContext(),"isPlaying:"+mAudioManager.isMusicActive(),Toast.LENGTH_LONG).show();
         audioFocusChangeListener = new MyOnAudioFocusChangeListener();
         if(isPlaying) {//播放状态
             int result = mAudioManager.requestAudioFocus(audioFocusChangeListener,
