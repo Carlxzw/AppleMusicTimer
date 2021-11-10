@@ -3,6 +3,7 @@ package com.carl.applemusictimer;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioFocusRequest;
 import android.media.AudioManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -36,28 +37,27 @@ public class MusicService extends Service {
         mAudioManager = (AudioManager) getApplicationContext().getSystemService(
                 Context.AUDIO_SERVICE);
         // 获取系统音乐服务状态
-        isPlaying=mAudioManager.isMusicActive();
-        Toast.makeText(getApplicationContext(),"isPlaying:"+mAudioManager.isMusicActive(),Toast.LENGTH_LONG).show();
+        isPlaying = mAudioManager.isMusicActive();
+        Toast.makeText(getApplicationContext(), "isPlaying:" + mAudioManager.isMusicActive(), Toast.LENGTH_LONG).show();
         audioFocusChangeListener = new MyOnAudioFocusChangeListener();
-        if(isPlaying) {//播放状态
+//        if (isPlaying) {//播放状态
             int result = mAudioManager.requestAudioFocus(audioFocusChangeListener,
                     AudioManager.STREAM_MUSIC,
                     AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
-            if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED)
-            {
+            if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                 Log.d(TAG, "requestAudioFocus successfully.");
-            }
-            else
-            {
+            } else {
                 Log.d(TAG, "requestAudioFocus failed.");
             }
-        }
+//        }
         return super.onStartCommand(intent, flags, startId);
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+
     }
 
     public class MyOnAudioFocusChangeListener implements AudioManager.OnAudioFocusChangeListener {

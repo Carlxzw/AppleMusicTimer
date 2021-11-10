@@ -243,7 +243,6 @@ public class CircleTimerView extends View
 //        canvas.drawColor(Color.RED);
         // canvas.drawLine(mCx, 0, mCx, getHeight(), new Paint());
         // canvas.drawLine(0, mCy, getWidth(), mCy, new Paint());
-        Log.d(TAG, "onDraw");
         // Content
         canvas.drawCircle(mCx, mCy, mRadius, mCirclePaint);
         canvas.save();
@@ -341,7 +340,7 @@ public class CircleTimerView extends View
                 {
                     mInCircleButton = true;
                     mPreRadian = getRadian(event.getX(), event.getY());
-                    Log.d(TAG, "In circle button");
+
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
